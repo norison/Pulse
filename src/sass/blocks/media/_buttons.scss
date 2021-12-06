@@ -1,6 +1,14 @@
+@media (max-width: 370px) {
+  .button {
+    &_submit {
+      height: 50px;
+    }
+  }
+}
+
 @media (max-width: 330px) {
   .button {
-    &__main {
+    &_main {
       width: 250px;
     }
   }

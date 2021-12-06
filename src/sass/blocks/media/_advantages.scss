@@ -1,0 +1,16 @@
+@media (max-width: 977px) {
+  .advantages {
+    &__wrapper {
+      flex-direction: column;
+    }
+    &__item {
+      margin-bottom: 20px;
+    }
+    &__subtitle {
+      margin-top: 10px;
+    }
+    &__descr {
+      margin-top: 10px;
+    }
+  }
+}
