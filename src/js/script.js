@@ -1,14 +1,56 @@
-const slider = tns({
-  container: ".carousel__inner",
-  items: 1,
-  slideBy: "page",
-  controls: false,
-  nav: false,
-});
+window.addEventListener("DOMContentLoaded", function () {
+  // slider
+  const slider = tns({
+    container: ".carousel__inner",
+    items: 1,
+    slideBy: "page",
+    controls: false,
+    nav: false,
+  });
 
-document
-  .querySelector(".prev")
-  .addEventListener("click", () => slider.goTo("prev"));
-document
-  .querySelector(".next")
-  .addEventListener("click", () => slider.goTo("next"));
+  function subscribeForSliderAction(selector, operation) {
+    document
+      .querySelector(selector)
+      .addEventListener("click", () => slider.goTo(operation));
+  }
+
+  subscribeForSliderAction(".prev", "prev");
+  subscribeForSliderAction(".next", "next");
+
+  // catalog
+  const tabs = document.querySelectorAll(".catalog__tab");
+  const tabContents = document.querySelectorAll(".catalog__content");
+  const contents = document.querySelectorAll(".catalog-item__content");
+  const lists = document.querySelectorAll(".catalog-item__list");
+
+  function subscribeForTabs() {
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        deactivateAllTabs();
+        tab.classList.add("catalog__tab_active");
+        tabContents[index].classList.add("catalog__content_active");
+      });
+    });
+  }
+
+  function deactivateAllTabs() {
+    tabs.forEach((tab, index) => {
+      tab.classList.remove("catalog__tab_active");
+      tabContents[index].classList.remove("catalog__content_active");
+    });
+  }
+
+  function subscribeForItemLinkToggle(selector) {
+    document.querySelectorAll(selector).forEach((item, index) => {
+      item.addEventListener("click", (event) => {
+        event.preventDefault();
+        contents[index].classList.toggle("catalog-item__content_active");
+        lists[index].classList.toggle("catalog-item__list_active");
+      });
+    });
+  }
+
+  subscribeForTabs();
+  subscribeForItemLinkToggle(".catalog-item__link");
+  subscribeForItemLinkToggle(".catalog-item__back");
+});
