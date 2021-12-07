@@ -1,0 +1,31 @@
+.feedback {
+  min-height: 920px;
+  padding: 60px 0 48px 0;
+  &__person {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  &__photo {
+    width: 169px;
+    height: 169px;
+    margin-right: 60px;
+  }
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #0d0d0d;
+  }
+  &__achive {
+    font-weight: 500;
+    font-size: 14px;
+    color: #646464;
+  }
+  &__comment {
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0d0d0d;
+  }
+}
