@@ -53,4 +53,33 @@ window.addEventListener("DOMContentLoaded", function () {
   subscribeForTabs();
   subscribeForItemLinkToggle(".catalog-item__link");
   subscribeForItemLinkToggle(".catalog-item__back");
+
+  // modal
+  const overlay = document.querySelector(".overlay");
+
+  function showElement(element) {
+    overlay.classList.remove("hidden");
+    element.classList.remove("hidden");
+  }
+
+  document.querySelectorAll("[data-modal=consultation]").forEach((button) => {
+    button.addEventListener("click", () => {
+      showElement(document.querySelector("#consultation"));
+    });
+  });
+
+  document.querySelectorAll(".button_mini").forEach((button) => {
+    button.addEventListener("click", () => {
+      showElement(document.querySelector("#order"));
+    });
+  });
+
+  document.querySelectorAll(".modal__close").forEach((closeElement) => {
+    closeElement.addEventListener("click", () => {
+      overlay.classList.add("hidden");
+      document.querySelectorAll(".modal").forEach((element) => {
+        element.classList.add("hidden");
+      });
+    });
+  });
 });

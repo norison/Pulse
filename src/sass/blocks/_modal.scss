@@ -1,5 +1,4 @@
 .overlay {
-  display: none;
   position: fixed;
   top: 0;
   width: 100%;
@@ -40,8 +39,4 @@
   &_mini {
     min-height: 140px;
   }
-}
-
-#consultation, #order, #thanks {
-  display: none;
 }
