@@ -70,7 +70,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll(".button_mini").forEach((button) => {
     button.addEventListener("click", () => {
-      showElement(document.querySelector("#order"));
+      const orderModal = document.querySelector("#order");
+      const orderDescr = orderModal.querySelector(".modal__descr");
+
+      orderDescr.textContent = button
+        .closest(".catalog-item")
+        .querySelector(".catalog-item__subtitle").textContent;
+
+      showElement(orderModal);
     });
   });
 
